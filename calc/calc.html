@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .calculator {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .calculator input {
+            width: 50px;
+            margin: 5px;
+        }
+        .calculator button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="number" id="value1" placeholder="Value 1">
+        <input type="number" id="value2" placeholder="Value 2">
+        <br>
+        <button onclick="calculate('add')">Add</button>
+        <button onclick="calculate('subtract')">Subtract</button>
+        <button onclick="calculate('multiply')">Multiply</button>
+        <button onclick="calculate('divide')">Divide</button>
+        <br>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            var value1 = parseFloat(document.getElementById('value1').value);
+            var value2 = parseFloat(document.getElementById('value2').value);
+            var result;
+
+            switch(operation) {
+                case 'add':
+                    result = value1 + value2;
+                    break;
+                case 'subtract':
+                    result = value1 - value2;
+                    break;
+                case 'multiply':
+                    result = value1 * value2;
+                    break;
+                case 'divide':
+                    if (value2 !== 0) {
+                        result = value1 / value2;
+                    } else {
+                        alert("Cannot divide by zero");
+                        return;
+                    }
+                    break;
+                default:
+                    result = "Invalid operation";
+            }
+
+            document.getElementById('result').textContent = result;
+        }
+    </script>
+</body>
+</html>
